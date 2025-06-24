@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="plate.css">
+    <title>SocialConnect</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">SocialConnect</div>
+        <div class="nav-search">
+            <input type="text" class="search-input" placeholder="Rechercher des amis, des pages...">
+        </div>
+        <div class="nav-actions">
+            <button class="nav-btn" onclick="openModal('profileModal')">Mon Profil</button>
+            <button class="nav-btn" onclick="openModal('friendsModal')">Amis</button>
+            <button class="nav-btn" onclick="openModal('messagesModal')">Messages</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Menu</h3>
+            <div class="sidebar-item" onclick="showSection('feed')">
+                <span>🏠</span> Fil d'actualité
+            </div>
+            <div class="sidebar-item" onclick="showSection('friends')">
+                <span>👥</span> Amis
+            </div>
+            <div class="sidebar-item" onclick="showSection('groups')">
+                <span>👥</span> Groupes
+            </div>
+            <div class="sidebar-item" onclick="showSection('pages')">
+                <span>📄</span> Pages
+            </div>
+            <div class="sidebar-item" onclick="showSection('events')">
+                <span>📅</span> Événements
+            </div>
+            <div class="sidebar-item" onclick="showSection('photos')">
+                <span>📸</span> Photos
+            </div>
+            <div class="sidebar-item" onclick="showSection('videos')">
+                <span>🎥</span> Vidéos
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="post-composer">
+                <textarea class="composer-input" placeholder="Quoi de neuf aujourd'hui ?"></textarea>
+                <div class="composer-actions">
+                    <div class="composer-buttons">
+                        <button class="composer-btn">📸 Photo</button>
+                        <button class="composer-btn">🎥 Vidéo</button>
+                        <button class="composer-btn">😊 Humeur</button>
+                        <button class="composer-btn">📍 Lieu</button>
+                    </div>
+                    <button class="post-btn" onclick="createPost()">Publier</button>
+                </div>
+            </div>
+
+            <div id="posts-container">
+                <!-- Les posts seront ajoutés ici dynamiquement -->
+            </div>
+        </main>
+
+        <aside class="friends-list">
+            <h3>Amis en ligne</h3>
+            <div class="friend-item">
+                <div class="friend-avatar">M</div>
+                <div>
+                    <div>Marie Dubois</div>
+                    <small>En ligne</small>
+                </div>
+                <div class="online-indicator"></div>
+            </div>
+            <div class="friend-item">
+                <div class="friend-avatar">P</div>
+                <div>
+                    <div>Pierre Martin</div>
+                    <small>Il y a 5 min</small>
+                </div>
+                <div class="online-indicator"></div>
+            </div>
+            <div class="friend-item">
+                <div class="friend-avatar">S</div>
+                <div>
+                    <div>Sophie Leroy</div>
+                    <small>En ligne</small>
+                </div>
+                <div class="online-indicator"></div>
+            </div>
+            <div class="friend-item">
+                <div class="friend-avatar">A</div>
+                <div>
+                    <div>Antoine Blanc</div>
+                    <small>Il y a 2h</small>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('profileModal')">&times;</span>
+            <h2>Mon Profil</h2>
+            <div style="text-align: center; margin: 2rem 0;">
+                <div class="avatar" style="width: 100px; height: 100px; font-size: 2rem; margin: 0 auto 1rem;">U</div>
+                <h3>Utilisateur</h3>
+                <p>Membre depuis janvier 2025</p>
+                <p>📍 Paris, France</p>
+                <p>💼 Développeur Web</p>
+                <p>🎓 École d'Informatique</p>
+            </div>
+            <button class="post-btn" style="width: 100%;">Modifier le profil</button>
+        </div>
+    </div>
+
+    <div id="friendsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('friendsModal')">&times;</span>
+            <h2>Mes Amis (24)</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div style="text-align: center; padding: 1rem; border: 1px solid #eee; border-radius: 12px;">
+                    <div class="friend-avatar" style="margin: 0 auto 0.5rem;">M</div>
+                    <div>Marie Dubois</div>
+                    <small>24 amis en commun</small>
+                </div>
+                <div style="text-align: center; padding: 1rem; border: 1px solid #eee; border-radius: 12px;">
+                    <div class="friend-avatar" style="margin: 0 auto 0.5rem;">P</div>
+                    <div>Pierre Martin</div>
+                    <small>18 amis en commun</small>
+                </div>
+                <div style="text-align: center; padding: 1rem; border: 1px solid #eee; border-radius: 12px;">
+                    <div class="friend-avatar" style="margin: 0 auto 0.5rem;">S</div>
+                    <div>Sophie Leroy</div>
+                    <small>31 amis en commun</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="messagesModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('messagesModal')">&times;</span>
+            <h2>Messages</h2>
+            <div style="border: 1px solid #eee; border-radius: 12px; margin-top: 1rem;">
+                <div class="friend-item" style="border-bottom: 1px solid #eee;">
+                    <div class="friend-avatar">M</div>
+                    <div style="flex: 1;">
+                        <div>Marie Dubois</div>
+                        <small>Salut ! Comment ça va ?</small>
+                    </div>
+                    <small>14:30</small>
+                </div>
+                <div class="friend-item" style="border-bottom: 1px solid #eee;">
+                    <div class="friend-avatar">P</div>
+                    <div style="flex: 1;">
+                        <div>Pierre Martin</div>
+                        <small>Tu viens à la soirée ce soir ?</small>
+                    </div>
+                    <small>13:45</small>
+                </div>
+                <div class="friend-item">
+                    <div class="friend-avatar">S</div>
+                    <div style="flex: 1;">
+                        <div>Sophie Leroy</div>
+                        <small>Merci pour ton aide !</small>
+                    </div>
+                    <small>12:20</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Données des posts exemples
+        const samplePosts = [
+            {
+                id: 1,
+                author: "Marie Dubois",
+                avatar: "M",
+                time: "Il y a 2 heures",
+                content: "Superbe coucher de soleil aujourd'hui ! 🌅 Rien de mieux pour finir la journée en beauté.",
+                likes: 15,
+                comments: 3,
+                shares: 1
+            },
+            {
+                id: 2,
+                author: "Pierre Martin",
+                avatar: "P", 
+                time: "Il y a 4 heures",
+                content: "Première fois que j'essaie la cuisine japonaise... et je suis conquis ! 🍣 Des recommandations de restaurants ?",
+                likes: 8,
+                comments: 7,
+                shares: 0
+            },
+            {
+                id: 3,
+                author: "Sophie Leroy",
+                avatar: "S",
+                time: "Il y a 6 heures", 
+                content: "Weekend randonnée dans les Alpes ! La nature est vraiment ressourçante 🏔️ #nature #randonnée",
+                likes: 23,
+                comments: 5,
+                shares: 3
+            }
+        ];
+
+        let posts = [...samplePosts];
+        let postIdCounter = 4;
+
+        // Charger les posts au démarrage
+        window.onload = function() {
+            renderPosts();
+        };
+
+        function renderPosts() {
+            const container = document.getElementById('posts-container');
+            container.innerHTML = '';
+            
+            posts.forEach(post => {
+                const postElement = createPostElement(post);
+                container.appendChild(postElement);
+            });
+        }
+
+        function createPostElement(post) {
+            const postDiv = document.createElement('div');
+            postDiv.className = 'post';
+            postDiv.innerHTML = `
+                <div class="post-header">
+                    <div class="avatar">${post.avatar}</div>
+                    <div class="post-info">
+                        <h4>${post.author}</h4>
+                        <div class="post-time">${post.time}</div>
+                    </div>
+                </div>
+                <div class="post-content">${post.content}</div>
+                <div class="post-actions">
+                    <button class="action-btn" onclick="toggleLike(${post.id})">
+                        <span>👍</span> J'aime (${post.likes})
+                    </button>
+                    <button class="action-btn" onclick="showComments(${post.id})">
+                        <span>💬</span> Commenter (${post.comments})
+                    </button>
+                    <button class="action-btn" onclick="sharePost(${post.id})">
+                        <span>📤</span> Partager (${post.shares})
+                    </button>
+                </div>
+            `;
+            return postDiv;
+        }
+
+        function createPost() {
+            const textarea = document.querySelector('.composer-input');
+            const content = textarea.value.trim();
+            
+            if (content) {
+                const newPost = {
+                    id: postIdCounter++,
+                    author: "Utilisateur",
+                    avatar: "U",
+                    time: "À l'instant",
+                    content: content,
+                    likes: 0,
+                    comments: 0,
+                    shares: 0
+                };
+                
+                posts.unshift(newPost);
+                textarea.value = '';
+                renderPosts();
+                
+                // Animation d'ajout
+                const firstPost = document.querySelector('.post');
+                firstPost.style.animation = 'slideIn 0.5s ease';
+            }
+        }
+
+        function toggleLike(postId) {
+            const post = posts.find(p => p.id === postId);
+            if (post) {
+                post.likes += 1;
+                renderPosts();
+            }
+        }
+
+        function showComments(postId) {
+            alert('Fonctionnalité de commentaires en développement !');
+        }
+
+        function sharePost(postId) {
+            const post = posts.find(p => p.id === postId);
+            if (post) {
+                post.shares += 1;
+                renderPosts();
+                alert('Post partagé !');
+            }
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function showSection(section) {
+            alert(`Section ${section} en développement !`);
+        }
+
+        // Fermer les modals en cliquant à l'extérieur
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let modal of modals) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        }
+
+        // Permettre la publication avec Entrée + Ctrl
+        document.querySelector('.composer-input').addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                createPost();
+            }
+        });
+
+        // Animation CSS pour les nouveaux posts
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

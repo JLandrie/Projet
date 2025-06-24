@@ -1,0 +1,29 @@
+body{
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background: url(dark.avif) no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.nombre input{
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 40px;
+    font-size: 16px;
+    color: white;
+    padding: 20px 45px 20px 20px;
+}
+.nombre input::placeholder{
+    color: rgb(255, 255, 255);
+}
+.nombre i{
+    display: flex;
+    position: relative;
+    margin: 0 5px 0 0;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 50px;
+}
