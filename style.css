@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* code pour navigateur */
+nav{
+    background: rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tête{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tête img{
+    width: 50px;
+    height: 50px;
+    border-radius: 200px;
+    padding: 10px;
+}
+
+.tête img:hover{
+    width: 70px;
+    height: 70px;
+}
+
+.tête h1{
+    padding: 2px;
+    color:  rgb(5,140,56);
+}
+
+.outils{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    
+}
+
+.outils li{
+    list-style: none;
+}
+
+.outils li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    margin: 10px;
+    border-radius: 20px;
+    background:rgb(5,140,56);
+    text-transform: uppercase;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.outils li a:hover {
+    background: white;
+    color: black;
+
+}
+
+/* code pour le body */
+.home {
+    min-height: 100vh;
+    background: url(ong.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.home .besoin{
+    align-items: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.644);
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    
+}
+
+.home .besoin h1{
+    font-size: 100px;
+    padding: 200px 0 0 0;
+}
+
+.home .besoin img{
+    width: 400px;
+    height: 400px;
+    margin: 50px 0 0 0;
+    border: 10px solid rgb(5,140,56);
+    border-style: double;
+    padding: 0 0 0 0;
+}
+
+.home .besoin .btn {
+    background: white;
+    border: none;
+    outline: none;
+    text-align: center;
+    align-items: center;
+    border-radius: 50px;
+    width: 150px;
+    height: 40px;
+    margin: 100px 0 10px 0;
+}
+
+.home .besoin .text {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0;
+}
+
+.acceil{
+    min-height: 100vh;
+    background: black;
+    background-position: center;
+    background-size: cover;
+}
