@@ -1,122 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 *{
     margin: 0;
     padding: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
 }
-
-/* code pour navigateur */
-nav{
-    background: rgb(0, 0, 0);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.tête{
+body{
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    background: url(dark.avif) no-repeat;
+    background-position: center;
+    background-size: cover;
 }
-
-.tête img{
-    width: 50px;
-    height: 50px;
-    border-radius: 200px;
-    padding: 10px;
-}
-
-.tête img:hover{
-    width: 70px;
-    height: 70px;
-}
-
-.tête h1{
-    padding: 2px;
-    color:  rgb(5,140,56);
-}
-
-.outils{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    
-}
-
-.outils li{
-    list-style: none;
-}
-
-.outils li a{
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    padding: 5px;
-    margin: 10px;
+.wrapper{
+    width: 420px;
+    border: 2px solid rgb(255, 255, 255);
+    background: rgba(128, 0, 128, 0.185);
+    color: white;
     border-radius: 20px;
-    background:rgb(5,140,56);
-    text-transform: uppercase;
-    font-size: 16px;
-    cursor: pointer;
+    padding: 30px 40px;
 }
-
-.outils li a:hover {
-    background: white;
-    color: black;
-
-}
-
-/* code pour le body */
-.home {
-    min-height: 100vh;
-    background: url(ong.jpg) no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-.home .besoin{
-    align-items: center;
+.wrapper h1{
+    font-family: 36px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.644);
-    background-position: center;
-    background-size: cover;
-    min-height: 100vh;
-    
 }
-
-.home .besoin h1{
-    font-size: 100px;
-    padding: 200px 0 0 0;
+.wrapper .input-box{
+    height: 50px;
+    width: 100%;
+    position: relative;
+    margin: 30px 0;
 }
-
-.home .besoin img{
-    width: 400px;
-    height: 400px;
-    margin: 50px 0 0 0;
-    border: 10px solid rgb(5,140,56);
-    border-style: double;
-    padding: 0 0 0 0;
-}
-
-.home .besoin .btn {
-    background: white;
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
     border: none;
     outline: none;
+    border: 2px solid rgba(255,255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: white;
+    padding: 20px 45px 20px 20px;
+}
+.input-box input::placeholder{
+    color: white;
+}
+.input-box i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+.wrapper .remember-forgot{
+    display: flex;
+    justify-content: space-around;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+.remember-forgot a{
+    text-decoration: none;
+    color: white;
+}
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+.remember-forgot label input{
+    accent-color: white;
+    margin-right: 3px;
+}
+.wrapper .btn{
+    height: 50px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+
+}
+
+.wrapper .register-link{
+    font-size: 14.5px;
     text-align: center;
-    align-items: center;
-    border-radius: 50px;
-    width: 150px;
-    height: 40px;
-    margin: 100px 0 10px 0;
+    margin: 20px 0 15px;
 }
-
-.home .besoin .text {
-    font-size: 18px;
-    font-weight: bold;
-    padding: 0;
+.register-link p a{
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
 }
-
-.acceil{
-    min-height: 100vh;
-    background: black;
-    background-position: center;
-    background-size: cover;
+.register-link p a:hover{
+    text-decoration: underline;
 }
